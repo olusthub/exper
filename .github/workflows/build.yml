@@ -19,7 +19,7 @@ jobs:
  node_container:
     runs-on: ubuntu-latest
     container:
-      image: node:18
+      image: mcr.microsoft.com/playwright:v1.40.0-jammy
       env:
         NODE_ENV: development
       ports:
@@ -30,4 +30,6 @@ jobs:
     steps:
       - name: Check for dockerenv file
         run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
+      - name: Check playwright version
+        run: (npx playwright --version y) || (echo No playywright at all)
 
